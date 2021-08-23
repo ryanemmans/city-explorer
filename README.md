@@ -30,7 +30,7 @@ Today you will be building a React application that uses the Axios library to ma
 ![Lab 06 Diagram](./img/lab-06-diagram.jpg)
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+<!-- Use this area to document the interactive changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 

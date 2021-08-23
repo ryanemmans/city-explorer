@@ -12,13 +12,11 @@ export default class App extends Component {
   }
 
   handleSearchClick = async () => {
-    const searchQuery = 'Seattle';
+    const searchQuery = this.state.searchQuery;
     const key = process.env.REACT_APP_CITY_KEY;
-
     const API_URL = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${searchQuery}&format=json`;
-
     const response = await axios.get(API_URL);
-
+    console.log(response.data[0])
     this.setState({ location: response.data[0] });
   }
 
@@ -26,7 +24,7 @@ export default class App extends Component {
     return (
       <>
         <input />
-        <button onClick={this.handleSearchClick}>Search</button>
+        <button onClick={this.handleSearchClick}>Explore!</button>
         {this.state.location.place_id &&
           <h2>The city is: {this.state.location.display_name}</h2>
         }
