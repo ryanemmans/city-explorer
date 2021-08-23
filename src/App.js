@@ -8,7 +8,7 @@ export default class App extends Component {
     this.state = {
       searchQuery: '',
       location: {}
-    }
+    };
   }
 
   handleSearchClick = async () => {
@@ -31,6 +31,6 @@ export default class App extends Component {
           <h2>The city is: {this.state.location.display_name}</h2>
         }
       </>
-    )
-  };
+    );
+  }
 }

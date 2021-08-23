@@ -41,7 +41,7 @@ Collaborated with Alex Beers on initial request-response cycle diagram and outli
 
 ## ***Deploy Status:***
 
-Status Badge will go here.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e4d29d10-0ffb-4101-8a98-88bb740e6e0c/deploy-status)](https://app.netlify.com/sites/ryanemmans-city-explorer/deploys)
 
 - - -
 
