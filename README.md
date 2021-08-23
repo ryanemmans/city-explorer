@@ -4,6 +4,12 @@
 **Version**: 1.0.0
 <!-- (increment the patch/fix version number if you make more commits past your first submission) -->
 
+- - -
+
+## ***Deploy Status:***
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e4d29d10-0ffb-4101-8a98-88bb740e6e0c/deploy-status)](https://app.netlify.com/sites/ryanemmans-city-explorer/deploys)
+
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
 
@@ -36,12 +42,6 @@ Collaborated with Alex Beers on initial request-response cycle diagram and outli
 ### Additional Resources
 
 - [Stack Overflow](https://stackoverflow.com/)
-
-- - -
-
-## ***Deploy Status:***
-
-Status Badge will go here.
 
 - - -
 
