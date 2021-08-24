@@ -31,6 +31,11 @@ export default class App extends Component {
     };
   }
 
+  handleWeatherClick = async () => {
+    const response = await axios.get('http://localhost:3001/weather');
+    alert(response.data);
+  }
+
   render() {
     console.log(this.state.location);
     return (
@@ -41,9 +46,12 @@ export default class App extends Component {
             <Form.Control placeholder='Enter City Here...' style={{ margin: '10px 0px 20px 30px', width: '30rem' }} onChange={(e) => this.setState({ searchQuery: e.target.value })} value={this.state.searchQuery} onSubmit={e => { e.preventDefault(); }} />
             <Button variant='info' size='lg' style={{ margin: '0px 0px 20px 30px' }} onClick={this.handleSearchClick}>Explore!</Button>
           </Form.Group>
+          <Form.Group>
+            <Button variant='info' size='lg' style={{ margin: '0px 0px 20px 30px' }} onClick={this.handleWeatherClick}>Get the Weather</Button>
+          </Form.Group>
         </Form>
         {this.state.alert ? (
-          <Alert variant={'danger'} style={{ margin: '0px 0px 20px 30px', width:'60%' }}>
+          <Alert variant={'danger'} style={{ margin: '0px 0px 20px 30px', width: '60%' }}>
             <Alert.Heading>{this.state.alert}</Alert.Heading>
             <hr />
             <p>
