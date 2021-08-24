@@ -1,7 +1,7 @@
 # City Explorer
 
 **Author**: Ryan Emmans
-**Version**: 1.0.0
+**Version**: 1.3.0
 <!-- (increment the patch/fix version number if you make more commits past your first submission) -->
 
 - - -
@@ -40,6 +40,8 @@ Today you will be building a React application that uses the Axios library to ma
 
 08-23-2021 9:00pm - Added map image and page styling using React Bootstrap.
 
+08-24-2021 1:00pm - Added error message for invalid form input.
+
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
@@ -48,6 +50,7 @@ Collaborated with Alex Beers on initial request-response cycle diagram and outli
 ### Additional Resources
 
 - [Stack Overflow](https://stackoverflow.com/)
+- [MDN Web Docs](https://developer.mozilla.org/en-US/)
 
 - - -
 
@@ -77,6 +80,6 @@ Name of feature: 3. Map: As a user, I want to see a map of the city so that I ca
 Name of feature: 4. Errors: As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 
 - Estimate of time needed to complete: 3 hours
-- Start time: 
-- Finish time:
-- Actual time needed to complete:
+- Start time: 12:00pm
+- Finish time: 1:00pm
+- Actual time needed to complete: 1 hour
