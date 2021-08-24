@@ -2,8 +2,6 @@ import { Component } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
@@ -37,7 +35,7 @@ export default class App extends Component {
             {
               this.state.location.place_id &&
               <div>
-                <div style={{ margin: '0px 0px 20px 30px', border: '1px solid lightGray', borderRadius: '4px', padding: '20px', width: '60%' }}>
+                <div style={{ margin: '0px 0px 20px 30px', border: '1px solid lightGray', borderRadius: '5px', padding: '20px', width: '60%' }}>
                   <h2>Your search: {this.state.location.display_name}</h2>
                   <h4>Latitude: {this.state.location.lat}</h4>
                   <h4>Longitude: {this.state.location.lon}</h4>

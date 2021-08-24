@@ -34,6 +34,12 @@ Today you will be building a React application that uses the Axios library to ma
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
+08-23-2021 4:00pm - Completed setup of City Explorer repository, with LocationIQ access token and Netlify deployment.
+
+08-23-2021 6:00pm - Built form to search locations with LocationIQ API, added latitude and longitude coordinates.
+
+08-23-2021 9:00pm - Added map image and page styling using React Bootstrap.
+
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
@@ -65,8 +71,8 @@ Name of feature: 3. Map: As a user, I want to see a map of the city so that I ca
 
 - Estimate of time needed to complete: 2 hours
 - Start time: 6:15pm
-- Finish time: 7:00pm
-- Actual time needed to complete: 45 minutes
+- Finish time: 9:00pm
+- Actual time needed to complete: 2.75
 
 Name of feature: 4. Errors: As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 
