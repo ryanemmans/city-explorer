@@ -8,6 +8,7 @@ import Image from 'react-bootstrap/Image';
 import Alert from 'react-bootstrap/Alert';
 
 export default class App extends React.Component {
+  // use constructor and super only if you have state
   constructor(props) {
     super(props);
     this.state = {
