@@ -22,19 +22,20 @@ export default class App extends React.Component {
     const searchQuery = this.state.searchQuery;
     const key = process.env.REACT_APP_CITY_KEY;
     const API_URL = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${searchQuery}&format=json&limit=1`;
-    const weatherResponse = await axios.get(`http://localhost:3001/weather`, {
+    const weatherRes = await axios.get(`http://localhost:3001/weather`, {
       params: {
-        latitude: this.state.location.lat,
-        longitude: this.state.location.lon,
+        lat: this.state.location.lat,
+        lon: this.state.location.lon,
         cityName: this.state.searchQuery
       }
     });
-    console.log(weatherResponse.data);
+    console.log(weatherRes.data);
     try {
-      const locationResponse = await axios.get(API_URL);
+      const locationRes = await axios.get(API_URL);
       this.setState({
-        location: locationResponse.data[0],
+        location: locationRes.data[0],
         alert: '',
+        forecastData: weatherRes.data
       });
     } catch (error) {
       this.setState({ alert: `${error}` });
@@ -104,3 +105,5 @@ export default class App extends React.Component {
     );
   };
 }
+
+// <Weather this.state.forecastData />
