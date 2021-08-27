@@ -37,6 +37,35 @@ export default class App extends React.Component {
   //     searchQuery: e.target.value
   //   });
   // }
+  // ---------- FRIDAY REVIEW ---------- //
+  // fetcher.js
+  // import axios from 'axios';
+
+  // const getWeather = async (searchQuery) => {
+  //   try {
+  //     const weather = `${process.env.REACT_APP_BACKEND}/weather?searchQuery=${searchQuery}`;
+  //     const weatherRes = await axios.get(weather);
+  //     console.log(weatherRes.data);
+  //     return weatherRes.data;
+  //   } catch (error) {
+  //     window.alert('ERROR: Unable to Complete Request', error);
+  //   }
+  // };
+
+  // export default getWeather;
+
+  // // --------------------------------- //
+
+  // handleFunction = (e) => {
+  //   e.preventDefault();
+  //   console.log('hello');
+  //   getLocation(this.state.searchQuery);
+  //   getWeather(this.state.searchQuery);
+  //   getMovies(this.state.searchQuery);
+  // };
+
+  // updateSearch = (e) => this.setState({searchQuery: e.target.value});
+  // --------------------------------- //
 
   handleClick = async (e) => {
     e.preventDefault();
