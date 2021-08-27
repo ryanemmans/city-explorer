@@ -51,11 +51,10 @@ export default class App extends React.Component {
       this.setState({
         forecastData: weatherRes.data,
       });
-      console.log(this.state.searchQuery);
+      // console.log(this.state.searchQuery);
 
       const MOVIE_API_URL = `${process.env.REACT_APP_BACKEND}/movies?searchQuery=${this.state.searchQuery}`;
       const movieRes = await axios.get(MOVIE_API_URL);
-      console.log(movieRes);
       this.setState({
         movieData: movieRes.data,
       });
@@ -63,13 +62,6 @@ export default class App extends React.Component {
     } catch (error) {
       this.setState({ alert: `${error}` });
     };
-
-    // ------- disables error --------//
-    // params: {
-    //   cityName: this.state.searchQuery,
-    //   }
-    // );
-    // -----------------------------//
   }
 
   render() {
@@ -112,8 +104,9 @@ export default class App extends React.Component {
               </Col>
             </Row>
             <Image src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=13`} style={{ boxShadow: '0px 2px 6px gray', margin: '5px 0px 30px 32px' }} alt='map' rounded />
-            <Row>
-              <Col style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <Row md={2}>
+              <Col>
+                <h1 style={{ margin: '5px 0px 30px 32px' }}>Movies Related to Your Search:</h1>
                 {this.state.movieData && <Movies movieObject={this.state.movieData} />}
               </Col>
             </Row>
