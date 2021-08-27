@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+// import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -19,36 +20,53 @@ export default class App extends React.Component {
     this.state = {
       searchQuery: '',
       location: {},
-      forecastData: []
+      forecastData: [],
+      lat: '',
+      lon: '',
+      cityName: '',
+      // error: '',
+      // alert: false
     };
   }
 
-  handleSearchClick = async () => {
-    const searchQuery = this.state.searchQuery;
-    const key = process.env.REACT_APP_CITY_KEY;
-    const API_URL = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${searchQuery}&format=json&limit=1`;
+  // handleChange = (e) => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     searchQuery: e.target.value
+  //   });
+  // }
 
-    // LINES 27 - 34, & 40 disable error
-    const weatherRes = await axios.get(`http://localhost:3001/weather`, {
-      params: {
-        lat: this.state.location.lat,
-        lon: this.state.location.lon,
-        cityName: this.state.searchQuery
-      }
-    });
-    console.log(weatherRes.data);
-    // -----------------------------//
+  handleClick = async (e) => {
+    e.preventDefault();
     try {
-      const locationRes = await axios.get(API_URL);
-      console.log('Location Data: ', locationRes.data);
+      const searchQuery = this.state.searchQuery;
+      const key = process.env.REACT_APP_CITY_KEY;
+      const LOCATION_API_URL = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${searchQuery}&format=json&limit=1`;
+      const locationRes = await axios.get(LOCATION_API_URL);
+      // console.log('Location Data: ', locationRes.data);
       this.setState({
         location: locationRes.data[0],
+        lat: locationRes.data[0].lat,
+        lon: locationRes.data[0].lon,
         alert: '',
-        forecastData: weatherRes.data
       });
+
+      const WEATHER_API_URL = `${process.env.REACT_APP_BACKEND}/weather?searchQuery=${this.state.searchQuery}&lat=${this.state.lat}&lon=${this.state.lon}`;
+      const weatherRes = await axios.get(WEATHER_API_URL);
+      this.setState({
+        forecastData: weatherRes.data,
+      });
+      console.log(this.state.forecastData);
     } catch (error) {
       this.setState({ alert: `${error}` });
     };
+
+    // ------- disables error --------//
+    // params: {
+    //   cityName: this.state.searchQuery,
+    //   }
+    // );
+    // -----------------------------//
   }
 
   render() {
@@ -60,8 +78,8 @@ export default class App extends React.Component {
               <h1>City Explorer</h1>
               <h3>Search For a City:</h3>
             </Form.Label>
-            <Form.Control type="text" placeholder='Enter City Here...' style={{ margin: '10px 0px 20px 30px', width: '20rem' }} onChange={(e) => this.setState({ searchQuery: e.target.value })} value={this.state.searchQuery} onSubmit={e => { e.preventDefault(); }} />
-            <Button variant='info' size='lg' style={{ margin: '0px 0px 20px 30px' }} onClick={this.handleSearchClick}>Explore!</Button>
+            <Form.Control type="text" placeholder='Enter City Here...' style={{ margin: '10px 0px 20px 30px', width: '20rem' }} onChange={(e) => this.setState({ searchQuery: e.target.value })} value={this.state.searchQuery} />
+            <Button variant='info' size='lg' style={{ margin: '0px 0px 20px 30px' }} onClick={this.handleClick}>Explore!</Button>
           </Form.Group>
         </Form>
         {this.state.alert ? (
@@ -74,7 +92,7 @@ export default class App extends React.Component {
           </Alert>
         ) : (this.state.location.place_id &&
           <div>
-            <Card style={{ margin: '0px 0px 20px 30px', border: '1px solid lightGray', borderRadius: '5px', width: '60%'}}>
+            <Card style={{ margin: '0px 0px 20px 30px', border: '1px solid lightGray', borderRadius: '5px', width: '60%' }}>
               <Card.Header>
                 <h2>Your search: {this.state.location.display_name}</h2>
               </Card.Header>
@@ -86,7 +104,7 @@ export default class App extends React.Component {
               </Card.Body>
             </Card>
             <Row>
-              <Col style={{ display: 'flex', justifyContent: 'space evenly', flexWrap: 'wrap' }}>
+              <Col style={{ display: 'flex', flexWrap: 'wrap' }}>
                 <Weather forecasts={this.state.forecastData} />
               </Col>
             </Row>
