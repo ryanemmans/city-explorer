@@ -42,6 +42,8 @@ Today you will be building a React application that uses the Axios library to ma
 
 08-24-2021 1:00pm - Added error message for invalid form input.
 
+08-25-2021 9:00pm - Added rendered weather data to page.
+
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 

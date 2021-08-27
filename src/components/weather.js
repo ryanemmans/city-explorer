@@ -11,7 +11,7 @@ export default class Weather extends React.Component {
   // };
   // }
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const weatherGroup = this.props.forecasts.map((forecastInfo, idx) => {
       return <Forecast forecast={forecastInfo} key={idx} />;
     });
@@ -27,7 +27,7 @@ class Forecast extends React.Component {
         <Card.Body>
           <Card.Title>{this.props.forecast.date}</Card.Title>
           <Card.Text>
-            {this.props.forecast.description}
+            {this.props.forecast.dailyForecast}
           </Card.Text>
         </Card.Body>
       </Card>
