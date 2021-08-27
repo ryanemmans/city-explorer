@@ -10,7 +10,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Image from 'react-bootstrap/Image';
 import Alert from 'react-bootstrap/Alert';
-import Weather from './weather';
+import Weather from './components/weather';
+import Movies from './components/movies';
 
 
 export default class App extends React.Component {
@@ -24,6 +25,7 @@ export default class App extends React.Component {
       lat: '',
       lon: '',
       cityName: '',
+      movieData: []
       // error: '',
       // alert: false
     };
@@ -56,7 +58,15 @@ export default class App extends React.Component {
       this.setState({
         forecastData: weatherRes.data,
       });
-      console.log(this.state.forecastData);
+      // console.log(this.state.forecastData);
+
+      const MOVIE_API_URL = `${process.env.REACT_APP_BACKEND}/movies?searchQuery=${this.state.searchQuery}`;
+      const movieRes = await axios.get(MOVIE_API_URL);
+      console.log(movieRes);
+      this.setState({
+        movieData: movieRes.data,
+      });
+      console.log(this.state.movieData);
     } catch (error) {
       this.setState({ alert: `${error}` });
     };
@@ -109,6 +119,11 @@ export default class App extends React.Component {
               </Col>
             </Row>
             <Image src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=13`} style={{ boxShadow: '0px 2px 6px gray', margin: '5px 0px 30px 32px' }} alt='map' rounded />
+            <Row>
+              <Col style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {this.state.movieData && <Movies movieObject={this.state.movieData} />}
+              </Col>
+            </Row>
             {/* &markers=icon:|${this.state.location.lat}|${this.state.location.lon}| */}
           </div>
         )}
