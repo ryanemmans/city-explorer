@@ -9,11 +9,11 @@ export default class Movie extends React.Component {
       // {
       //   this.props.movieObject.length &&
       <Card style={{ margin: '0px 0px 20px 30px' }}>
-        <Card.Header><h3>{this.props.film.title}</h3></Card.Header>
+        <Card.Header style={{ backgroundColor: '#dc3545', color: 'white' }}><h3>{this.props.film.title}</h3></Card.Header>
         {/* // ? this.props.movieObject[0].title : 'Sorry, no title.'}</h3> */}
         <Card.Body>
           <Card.Title>
-            <Image src={`https://image.tmdb.org/t/p/w500/${this.props.film.poster_path}`} />
+            <Image src={`https://image.tmdb.org/t/p/w500/${this.props.film.poster_path}`} style={{ width: '100%'}}/>
           </Card.Title>
           <Card.Text>
             {this.props.film.overview}
