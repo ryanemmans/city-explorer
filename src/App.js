@@ -70,7 +70,7 @@ export default class App extends React.Component {
         <Form>
           <Form.Group>
             <Form.Label style={{ margin: '50px 0px 0px 30px' }}>
-              <h1>City Explorer</h1>
+              <h1 style={{ fontSize: '5rem' }}>City Explorer!</h1>
               <h3>Search For a City:</h3>
             </Form.Label>
             <Form.Control type="text" placeholder='Enter City Here...' style={{ margin: '10px 0px 20px 30px', width: '20rem' }} onChange={(e) => this.setState({ searchQuery: e.target.value })} value={this.state.searchQuery} />
