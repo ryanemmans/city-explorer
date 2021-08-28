@@ -70,7 +70,7 @@ export default class App extends React.Component {
         <Form>
           <Form.Group>
             <Form.Label style={{ margin: '50px 0px 0px 30px' }}>
-              <h1 style={{ fontSize: '5rem' }}>City Explorer!</h1>
+              <h1 style={{ fontSize: '5rem', textShadow: '3px 3px 0px #0dcaf0' }}>City Explorer!</h1>
               <h3>Search For a City:</h3>
             </Form.Label>
             <Form.Control type="text" placeholder='Enter City Here...' style={{ margin: '10px 0px 20px 30px', width: '20rem' }} onChange={(e) => this.setState({ searchQuery: e.target.value })} value={this.state.searchQuery} />
@@ -86,32 +86,35 @@ export default class App extends React.Component {
             </p>
           </Alert>
         ) : (this.state.location.place_id &&
-          <div>
-            <Card style={{ margin: '0px 0px 20px 30px', border: '1px solid lightGray', borderRadius: '5px', width: '60%' }}>
-              <Card.Header>
-                <h2>Your search: {this.state.location.display_name}</h2>
-              </Card.Header>
-              <Card.Body>
-                <Card.Text>
-                  <h4>Latitude: {this.state.location.lat}</h4>
-                  <h4>Longitude: {this.state.location.lon}</h4>
-                </Card.Text>
-              </Card.Body>
-            </Card>
+          <>
             <Row>
-              <Col style={{ display: 'flex', flexWrap: 'wrap' }}>
+              <Col>
+                <Card style={{ margin: '0px 0px 20px 30px', border: '1px solid lightGray', borderRadius: '5px' }}>
+                  <Card.Header>
+                    <h2>{this.state.location.display_name}</h2>
+                  </Card.Header>
+                  <Card.Body>
+                    <Card.Text>
+                      <h4>Latitude: {this.state.location.lat}</h4>
+                      <h4>Longitude: {this.state.location.lon}</h4>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+                <h1 style={{ margin: '50px 0px 20px 32px' }}>Weather Forecast:</h1>
                 <Weather forecasts={this.state.forecastData} />
               </Col>
-            </Row>
-            <Image src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=13`} style={{ boxShadow: '0px 2px 6px gray', margin: '5px 0px 30px 32px' }} alt='map' rounded />
-            <Row md={2}>
               <Col>
-                <h1 style={{ margin: '5px 0px 30px 32px' }}>Movies Related to Your Search:</h1>
-                {this.state.movieData && <Movies movieObject={this.state.movieData} />}
+                <Image src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=13`} style={{ boxShadow: '0px 2px 6px gray', margin: '5px 0px 30px 32px' }} alt='map' rounded />
+              </Col>
+            </Row>
+            <h1 style={{ margin: '50px 0px 20px 32px' }}>Movies Related to Your Search:</h1>
+            <Row>
+              <Col>
+                <Movies movieObject={this.state.movieData} />
               </Col>
             </Row>
             {/* &markers=icon:|${this.state.location.lat}|${this.state.location.lon}| */}
-          </div>
+          </>
         )}
       </Container>
     );
