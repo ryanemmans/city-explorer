@@ -1,7 +1,7 @@
 # City Explorer
 
 **Author**: Ryan Emmans
-**Version**: 1.3.0
+**Version**: 1.5.0
 <!-- (increment the patch/fix version number if you make more commits past your first submission) -->
 
 - - -
@@ -44,10 +44,13 @@ Today you will be building a React application that uses the Axios library to ma
 
 08-25-2021 9:00pm - Added rendered weather data to page.
 
+08-27-2021 4:00pm - Added movie database API. Refactored components.
+
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
-Collaborated with Alex Beers on initial request-response cycle diagram and outline.
+- Collaborated with Alex Beers on initial request-response cycle diagram and outline.
+- Credit to TAs Hexx King, Michael Eclavea, Chance Harmon, and instructor JB Telles for all their help.
 
 ### Additional Resources
 

@@ -26,46 +26,10 @@ export default class App extends React.Component {
       lon: '',
       cityName: '',
       movieData: []
-      // error: '',
+      // error: null,
       // alert: false
     };
   }
-
-  // handleChange = (e) => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     searchQuery: e.target.value
-  //   });
-  // }
-  // ---------- FRIDAY REVIEW ---------- //
-  // fetcher.js
-  // import axios from 'axios';
-
-  // const getWeather = async (searchQuery) => {
-  //   try {
-  //     const weather = `${process.env.REACT_APP_BACKEND}/weather?searchQuery=${searchQuery}`;
-  //     const weatherRes = await axios.get(weather);
-  //     console.log(weatherRes.data);
-  //     return weatherRes.data;
-  //   } catch (error) {
-  //     window.alert('ERROR: Unable to Complete Request', error);
-  //   }
-  // };
-
-  // export default getWeather;
-
-  // // --------------------------------- //
-
-  // handleFunction = (e) => {
-  //   e.preventDefault();
-  //   console.log('hello');
-  //   getLocation(this.state.searchQuery);
-  //   getWeather(this.state.searchQuery);
-  //   getMovies(this.state.searchQuery);
-  // };
-
-  // updateSearch = (e) => this.setState({searchQuery: e.target.value});
-  // --------------------------------- //
 
   handleClick = async (e) => {
     e.preventDefault();
@@ -87,11 +51,10 @@ export default class App extends React.Component {
       this.setState({
         forecastData: weatherRes.data,
       });
-      // console.log(this.state.forecastData);
+      // console.log(this.state.searchQuery);
 
       const MOVIE_API_URL = `${process.env.REACT_APP_BACKEND}/movies?searchQuery=${this.state.searchQuery}`;
       const movieRes = await axios.get(MOVIE_API_URL);
-      console.log(movieRes);
       this.setState({
         movieData: movieRes.data,
       });
@@ -99,13 +62,6 @@ export default class App extends React.Component {
     } catch (error) {
       this.setState({ alert: `${error}` });
     };
-
-    // ------- disables error --------//
-    // params: {
-    //   cityName: this.state.searchQuery,
-    //   }
-    // );
-    // -----------------------------//
   }
 
   render() {
@@ -114,7 +70,7 @@ export default class App extends React.Component {
         <Form>
           <Form.Group>
             <Form.Label style={{ margin: '50px 0px 0px 30px' }}>
-              <h1>City Explorer</h1>
+              <h1 style={{ fontSize: '5rem' }}>City Explorer!</h1>
               <h3>Search For a City:</h3>
             </Form.Label>
             <Form.Control type="text" placeholder='Enter City Here...' style={{ margin: '10px 0px 20px 30px', width: '20rem' }} onChange={(e) => this.setState({ searchQuery: e.target.value })} value={this.state.searchQuery} />
@@ -148,8 +104,9 @@ export default class App extends React.Component {
               </Col>
             </Row>
             <Image src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=13`} style={{ boxShadow: '0px 2px 6px gray', margin: '5px 0px 30px 32px' }} alt='map' rounded />
-            <Row>
-              <Col style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <Row md={2}>
+              <Col>
+                <h1 style={{ margin: '5px 0px 30px 32px' }}>Movies Related to Your Search:</h1>
                 {this.state.movieData && <Movies movieObject={this.state.movieData} />}
               </Col>
             </Row>
@@ -160,3 +117,38 @@ export default class App extends React.Component {
     );
   };
 }
+
+// handleChange = (e) => {
+//   e.preventDefault();
+//   this.setState({
+//     searchQuery: e.target.value
+//   });
+// }
+// ----------FRIDAY REVIEW---------- //
+//   fetcher.js
+// import axios from 'axios';
+
+// const getWeather = async (searchQuery) => {
+//   try {
+//     const weather = `${process.env.REACT_APP_BACKEND}/weather?searchQuery=${searchQuery}`;
+//     const weatherRes = await axios.get(weather);
+//     console.log(weatherRes.data);
+//     return weatherRes.data;
+//   } catch (error) {
+//     window.alert('ERROR: Unable to Complete Request', error);
+//   }
+// };
+
+// export default getWeather;
+
+// // --------------------------------- //
+
+// handleFunction = (e) => {
+//   e.preventDefault();
+//   console.log('hello');
+//   getLocation(this.state.searchQuery);
+//   getWeather(this.state.searchQuery);
+//   getMovies(this.state.searchQuery);
+// };
+
+// updateSearch = (e) => this.setState({ searchQuery: e.target.value });
