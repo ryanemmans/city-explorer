@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
+import Image from 'react-bootstrap/Image';
 
 export default class Movie extends React.Component {
   render() {
@@ -11,7 +12,9 @@ export default class Movie extends React.Component {
         <Card.Header><h3>{this.props.film.title}</h3></Card.Header>
         {/* // ? this.props.movieObject[0].title : 'Sorry, no title.'}</h3> */}
         <Card.Body>
-          <Card.Title>{this.props.film.poster_path}</Card.Title>
+          <Card.Title>
+            <Image src={`https://image.tmdb.org/t/p/w500/${this.props.film.poster_path}`} />
+          </Card.Title>
           <Card.Text>
             {this.props.film.overview}
           </Card.Text>
