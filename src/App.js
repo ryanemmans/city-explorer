@@ -100,14 +100,14 @@ export default class App extends React.Component {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-                <h1 style={{ margin: '50px 0px 10px 32px' }}>Weather Forecast:</h1>
+                <h1 style={{ margin: '50px 0px 20px 32px' }}>Weather Forecast:</h1>
                 <Weather forecasts={this.state.forecastData} />
               </Col>
               <Col>
                 <Image src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=13`} style={{ boxShadow: '0px 2px 6px gray', margin: '5px 0px 30px 32px' }} alt='map' rounded />
               </Col>
             </Row>
-            <h1 style={{ margin: '50px 0px 30px 32px' }}>Movies Related to Your Search:</h1>
+            <h1 style={{ margin: '50px 0px 20px 32px' }}>Movies Related to Your Search:</h1>
             <Row>
               <Col>
                 <Movies movieObject={this.state.movieData} />
