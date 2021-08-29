@@ -37,7 +37,16 @@ export default class App extends React.Component {
       const searchQuery = this.state.searchQuery;
       const key = process.env.REACT_APP_CITY_KEY;
       const LOCATION_API_URL = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${searchQuery}&format=json&limit=1`;
-      const locationRes = await axios.get(LOCATION_API_URL);
+      const locationRes = await axios.get(LOCATION_API_URL,
+        {
+          params: {
+            searchQuery: this.state.searchQuery,
+            location: this.state.location,
+            lat: this.state.lat,
+            lon: this.state.lon,
+            cityName: this.state.cityName
+          }
+        });
       // console.log('Location Data: ', locationRes.data);
       this.setState({
         location: locationRes.data[0],
@@ -58,7 +67,7 @@ export default class App extends React.Component {
       this.setState({
         movieData: movieRes.data,
       });
-      console.log(this.state.movieData);
+      // console.log(this.state.movieData);
     } catch (error) {
       this.setState({ alert: `${error}` });
     };
@@ -74,7 +83,7 @@ export default class App extends React.Component {
               <h3>Search For a City:</h3>
             </Form.Label>
             <Form.Control type="text" placeholder='Enter City Here...' style={{ margin: '10px 0px 20px 30px', width: '20rem' }} onChange={(e) => this.setState({ searchQuery: e.target.value })} value={this.state.searchQuery} />
-            <Button variant='info' size='lg' style={{ margin: '0px 0px 20px 30px' }} onClick={this.handleClick}>Explore!</Button>
+            <Button variant='info' size='lg' style={{ margin: '0px 0px 50px 30px' }} onClick={this.handleClick}>Explore!</Button>
           </Form.Group>
         </Form>
         {this.state.alert ? (
